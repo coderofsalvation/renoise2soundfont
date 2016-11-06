@@ -1,0 +1,8 @@
+#!/bin/bash
+path="$(readlink -f "$(dirname $0)")"
+if [[ ! -n $2 ]]; then 
+  echo 'Usage: renoise2soundfont <file.xrns> <file.sf2>'
+  exit 0
+fi
+$path/xrns2sfxml.py "$1" "$1".xml
+$path/sf2tools/pysf-2/pysf.py --xml2sf "$1".xml "$2"
