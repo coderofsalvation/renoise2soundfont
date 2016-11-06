@@ -9,3 +9,4 @@
 ## TODO
 
 * stereo file handling
+* pysf better integration

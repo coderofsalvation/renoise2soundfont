@@ -5,7 +5,7 @@ path="$(readlink -f "$(dirname $0)")"
 
 dir2wav(){
   find $1 -type f | while read file; do 
-      sox "$file" -r $SAMPLERATE -b $BITRATE "${file%.*}.wav"
+      sox "$file" -D -r $SAMPLERATE -b $BITRATE "${file%.*}.wav"
   done
 }
 

@@ -92,12 +92,14 @@ def convert(Src, Dst):
             sf2Sample.appendChild( createTextNode(sf2doc,'name',sname) )
             sf2Sample.appendChild( createTextNode(sf2doc,'pitch',69) )
 
-            loop      = sf2doc.createElement('loop')
-            lbegin    = sample.getElementsByTagName('LoopStart')[0].firstChild.nodeValue
-            lend      = sample.getElementsByTagName('LoopEnd')[0].firstChild.nodeValue
-            loop.appendChild( createTextNode(sf2doc,'begin',lbegin ) )
-            loop.appendChild( createTextNode(sf2doc,'end',lend ) )
-            sf2Sample.appendChild(loop)
+            loopmode  = sample.getElementsByTagName('LoopMode')[0].firstChild.nodeValue
+            if( loopmode != "Off" ):
+                loop      = sf2doc.createElement('loop')
+                lbegin    = sample.getElementsByTagName('LoopStart')[0].firstChild.nodeValue
+                lend      = sample.getElementsByTagName('LoopEnd')[0].firstChild.nodeValue
+                loop.appendChild( createTextNode(sf2doc,'begin',lbegin ) )
+                loop.appendChild( createTextNode(sf2doc,'end',lend ) )
+                sf2Sample.appendChild(loop)
                 
 
             wavetables.appendChild(sf2Sample)
